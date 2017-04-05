@@ -1,0 +1,9 @@
+<h1>Product首頁</h1>
+<% @products.each do |p| %>
+<div class="div">
+	<p>產品名稱<%= p.name %></p> 
+	<p>價格<%= p.price %></p> 
+	<%= link_to '查看更多', product_path(p) %>
+</div>
+
+<% end %>

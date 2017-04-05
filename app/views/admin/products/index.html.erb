@@ -1,0 +1,10 @@
+<h1>Product後台首頁</h1>
+<%= link_to '新增產品' ,new_admin_product_path %>
+<% @products.each do |p| %>
+	<div>
+		<p>產品名稱<%= p.name %></p> 
+		<p>價格<%= p.price %></p> 
+		<%= link_to '查看更多', admin_product_path(p) %>
+	</div>	
+
+<% end %>

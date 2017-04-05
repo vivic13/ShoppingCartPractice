@@ -1,0 +1,28 @@
+<% if @product.errors.present?%>
+  <ul>
+        <% @product.errors.each do |error, message|%>
+          <li> <%= "#{error.capitalize}  #{message}" %></li>
+        <% end %>
+  </ul>
+<% end%>
+
+
+
+
+<%= form_for ([:admin, @product])do |f| %> 
+	<%= f.label :name,"產品名稱:" %><br>
+	<%= f.text_field :name %><br>
+	<%= f.label :price,"產品價格:" %><br>
+	<%= f.text_field :price %><br>
+	<%= f.label :cost,"進貨成本:" %><br>
+	<%= f.text_field  :cost %><br>
+	<%= f.label :quantity,"庫存數量:" %><br>
+	<%= f.text_field  :quantity %><br>
+
+	<%= f.submit %>
+	
+
+
+
+
+<% end %>
