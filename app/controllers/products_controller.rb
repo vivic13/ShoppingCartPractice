@@ -17,9 +17,8 @@ class ProductsController < ApplicationController
 	end 
 
 	def remove
-		@cart_product = @product.find_product_in_cart
+		current_cart.remove_product_in_cart(@product)
 
-		@cart_product.destroy
 		
 		redirect_to :back
 

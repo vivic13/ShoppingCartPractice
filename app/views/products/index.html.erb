@@ -1,7 +1,7 @@
 <h1>Product首頁</h1>
 <div class="cart">
 	<p >您的購物車目前有<span id="cart_total" ><%= current_cart.total_quantity %></span>個商品</p>
-	<p> <%#= current_cart.product %></p>
+	<p> <%= link_to '查看購物車', new_order_path(@order) %> <%= link_to '查看您的訂單記錄', orders_path %></p>
 </div>
 <% @products.each do |p| %>
 <table>

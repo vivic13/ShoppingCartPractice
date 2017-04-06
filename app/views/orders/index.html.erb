@@ -1,0 +1,17 @@
+<h1>我的訂單記錄</h1>
+
+
+	<% @orders.each do |o| %>
+		<div>		
+				<p><%= o.id %></p>
+				<p><%= o.name %></p>
+				<p>NT$<%= o.amount %></p>
+				<p><%= o.created_at %></p>
+				<p><%= link_to 'Detail', order_path(o)%></p>
+		</div>
+	<% end %>
+
+
+
+
+<%= link_to '繼續購物' , products_path %>
