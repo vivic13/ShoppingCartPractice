@@ -1,8 +1,9 @@
 <h1>Product Details</h1>
+	<%= image_tag(@product.image) %>
+
 	<p>產品名稱 : <%= @product.name %></p> 
-	<p>價格 : <%= @product.price %></p>
-	<p>成本 : <%= @product.cost %></p>
-	<p>數量 : <%= @product.quantity %></p>  
+	<p>價格 : NT$<%= @product.price %></p>
+	<p>數量 : <%= @product.quantity %> 個</p>  
 
 
 

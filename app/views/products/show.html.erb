@@ -1,4 +1,5 @@
 <h1>Product Details</h1>
+<%= image_tag(@product.image) %>
 <p>產品名稱 : <%= @product.name %></p> 
-<p>價格 : <%= @product.price %></p>
+<p>價格 : NT$<%= @product.price %></p>
 <%= link_to '回首頁' ,products_path %>
