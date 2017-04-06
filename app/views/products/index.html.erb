@@ -1,4 +1,8 @@
 <h1>Product首頁</h1>
+<div class="cart">
+	<p >您的購物車目前有<span id="cart_total" ><%= current_cart.total_quantity %></span>個商品</p>
+	<p> <%#= current_cart.product %></p>
+</div>
 <% @products.each do |p| %>
 <table>
 		<tr>
@@ -22,5 +26,10 @@
 			</td>
 			
 		</tr>	
+		<tr>
+			<td>
+				<%= link_to "加入購物車", add_to_cart_product_path(p), :method => :post, :remote => true %>
+			</td>
+		</tr>
 
 <% end %>
