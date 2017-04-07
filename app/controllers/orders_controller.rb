@@ -24,6 +24,8 @@ class OrdersController < ApplicationController
 		@order.user = current_user
 		@order.add_product_to_order(current_cart)
 			if @order.save 
+				UserMailer.order_success(@order).deliver_later
+				
 				current_cart.destroy
       	session[:cart_id] = nil
       	redirect_to order_path(@order)
