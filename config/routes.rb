@@ -15,4 +15,13 @@ Rails.application.routes.draw do
 	namespace :admin do
   	resources :products
 	end
+	
+	scope :path => '/api/v1/', :module => "api_v1", :as => 'v1', :defaults => { :format => :json } do
+  	resources :products
+	end
+
+	if Rails.env.development?
+  	mount LetterOpenerWeb::Engine, at: "/letter_opener"
+	end
+
 end
