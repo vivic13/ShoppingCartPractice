@@ -1,7 +1,9 @@
 class ApiV1::ProductsController < ApiController
 
 	def index 
-		@products = Product.all
+		#@products = Product.all
+		@xx = request.headers.to_h["abc"]
+		render json: @xx
 	end
 
 	def show 

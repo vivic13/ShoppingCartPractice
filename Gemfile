@@ -9,7 +9,9 @@ end
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.2'
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+gem 'mysql2'
+gem 'capistrano-rails', :group => :development
+gem 'capistrano-passenger', :group => :development
 # Use Puma as the app server
 gem 'puma', '~> 3.0'
 # Use SCSS for stylesheets
@@ -52,6 +54,7 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem "letter_opener", :git => "git://github.com/ryanb/letter_opener.git", :branch => "master"
   gem 'letter_opener_web'
+  gem 'sqlite3'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
