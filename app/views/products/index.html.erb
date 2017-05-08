@@ -1,35 +1,45 @@
 <h1>Product首頁</h1>
-<div class="cart">
-	<p >您的購物車目前有<span id="cart_total" ><%= current_cart.total_quantity %></span>個商品</p>
-	<p> <%= link_to '查看購物車', new_order_path(@order) %> <%= link_to '查看您的訂單記錄', orders_path %></p>
-</div>
-<% @products.each do |p| %>
-<table>
-		<tr>
-		 	<td>
-				<%= image_tag(p.image) %>
-			</td>
-		</tr>
-		<tr>
-		 	<td>
-				<p>產品名稱: <%= p.name %></p> 
-			</td>
-		</tr>
-		<tr>
-			<td>
-				<p>價格: NT$<%= p.price %></p>
-			</td> 
-		</tr>
-		<tr>
-		 	<td>
-				<%= link_to '查看更多', product_path(p) %>
-			</td>
-			
-		</tr>	
-		<tr>
-			<td>
-				<%= link_to "加入購物車", add_to_cart_product_path(p), :method => :post, :remote => true %>
-			</td>
-		</tr>
+<div class="container">
+	<div class="cart">
+		<p >您的購物車目前有<span id="cart_total" ><%= current_cart.total_quantity %></span>個商品</p>
+		<p> <%= link_to new_order_path(@order)  do%> 
+				<%= image_tag "cart.png" %>
+		<% end %>
+		<%= link_to orders_path do %>
+			<%= image_tag "order.png" %>
+		<% end %>
+		</p>
+	</div>
+	<div class="container">
+		<% @products.each do |p| %>
+			<table>
+				<tr>
+				 	<td>
+						<%= image_tag(p.image) %>
+					</td>
+				</tr>
+				<tr>
+				 	<td>
+						<p>產品名稱: <%= p.name %></p> 
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<p>價格: NT$<%= p.price %></p>
+					</td> 
+				</tr>
+				<tr>
+				 	<td>
+						<%= link_to product_path(p) do%>
+							<%= image_tag "look.png" %>
+						<% end %>
+						<%= link_to  add_to_cart_product_path(p), :method => :post, :remote => true  do%>
+							<%= image_tag "add.png" %>
+						<% end %> 
+					</td>				
+				</tr>
+			</table>
+		<% end %>
 
-<% end %>
+	</div>
+</div>
