@@ -7,6 +7,8 @@ Rails.application.routes.draw do
       post :remove
     end
 	end
+	get '/aboutus', to: 'home#about', :controller => 'home'
+  get '/contactus', to: 'home#contact', :controller => 'home'
 	
 	resources :orders
 

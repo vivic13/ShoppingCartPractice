@@ -17,9 +17,8 @@
 @import "bootstrap";
 @import "font-awesome";
 
-table{
-	border-style: dashed;
-	border-size:0.2px;
-	float: left;
-	margin:2px;
+body{
+	padding-top: 100px; 
+  box-sizing: border-box;
+  font-size: 16px;
 }
