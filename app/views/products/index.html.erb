@@ -1,44 +1,32 @@
-<div class="container">
-	<div class="cart">
-		<p >您的購物車目前有<span id="cart_total" ><%= current_cart.total_quantity %></span>個商品</p>
-		<p> <%= link_to new_order_path(@order)  do%> 
-				<%= image_tag "cart.png" %>
+	<div class="cart text-center">
+		<p >
+		<%= link_to new_order_path(@order)  do%> 
+				<i class="fa fa-shopping-cart fa-2x" aria-hidden="true"> <%= current_cart.total_quantity%> </i><small>個純產品</small>
 		<% end %>
-		<%= link_to orders_path do %>
-			<%= image_tag "order.png" %>
-		<% end %>
-		</p>
+		
+		</p>		
 	</div>
 	<div class="container">
 		<% @products.each do |p| %>
-			<table>
-				<tr>
-				 	<td>
-						<%= image_tag(p.image) %>
-					</td>
-				</tr>
-				<tr>
-				 	<td>
-						<p>產品名稱: <%= p.name %></p> 
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<p>價格: NT$<%= p.price %></p>
-					</td> 
-				</tr>
-				<tr>
-				 	<td>
+			<div class="col-md-6">
+				<div class="col-md-4">
+						<%= image_tag(p.image, class:"product")%>
+				</div>
+				<div class="col-md-8">
+						<h3><%= p.name %></h3> 
+				
+						<p>NT$<%= p.price %></p>
+				
 						<%= link_to product_path(p) do%>
-							<%= image_tag "look.png" %>
+							<i class="fa fa-search-plus fa-2x" aria-hidden="true"></i>
 						<% end %>
 						<%= link_to  add_to_cart_product_path(p), :method => :post, :remote => true  do%>
-							<%= image_tag "add.png" %>
+						<i class="fa fa-cart-plus fa-2x" aria-hidden="true"></i>
 						<% end %> 
-					</td>				
-				</tr>
-			</table>
+				</div>
+			</div>
 		<% end %>
 
 	</div>
-</div>
+
+
