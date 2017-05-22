@@ -16,17 +16,35 @@
 						<h3><%= p.name %></h3> 
 				
 						<p>NT$<%= p.price %></p>
+						<% @p = p.id %>
+						<button type="button" class="btn info" data-toggle="modal" data-target="#<%= @p %>"><i class="fa fa-search-plus fa-2x" aria-hidden="true"></i></button>
+  					<div id ="<%= @p%>" class="modal fade myModal" role="dialog">
+						  <div class="modal-dialog">
+						    <!-- Modal content-->
+						    <div class="modal-content">
+						      <div class="modal-header">
+						        <button type="button" class="close" data-dismiss="modal">&times;</button>
+						        <h4 class="modal-title"><%= p.name %></h4>
+						      </div>
+						      <div class="modal-body">
+						      	<div class="container">
+						      	<p>NT$<%= p.price %></p>
+						      	<%= image_tag(p.image, class:"product2")%>
+						        <p> description </p>
+						        </div>
+						      </div>
+						    </div>
+
+						  </div>
+						</div>
+
 				
-						<%= link_to product_path(p) do%>
-							<i class="fa fa-search-plus fa-2x" aria-hidden="true"></i>
-						<% end %>
-						<%= link_to  add_to_cart_product_path(p), :method => :post, :remote => true  do%>
+						<%= link_to  add_to_cart_product_path(p), :method => :post, :id => "cart_total", :remote => true  do%>
 						<i class="fa fa-cart-plus fa-2x" aria-hidden="true"></i>
+
 						<% end %> 
 				</div>
 			</div>
 		<% end %>
 
-	</div>
-
-
+		
