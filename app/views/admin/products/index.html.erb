@@ -1,6 +1,10 @@
-<h1>Product後台首頁</h1>
-<%= link_to '新增產品' ,new_admin_product_path %>
+<div class="container text-center">
+<h1>後台首頁</h1>
+<%= link_to '新增產品' ,new_admin_product_path , class: "btn-default"%>
+</div>
+<div class="container text-center">
 <% @products.each do |p| %>
+	<div class="col-md-4">
 	<table>
 		<tr>
 		 	<td>
@@ -19,10 +23,11 @@
 		</tr>
 		<tr>
 		 	<td>
-				<%= link_to '查看更多', admin_product_path(p) %>
-			</td>
-			
+				<%= link_to '查看細節', admin_product_path(p), class:"btn-default" %>
+			</td>			
 		</tr>	
-
+		</table>
+	</div>
 
 <% end %>
+</div>
