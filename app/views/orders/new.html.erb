@@ -1,22 +1,33 @@
-<ol>
-<div>
-	<h2>您的購物車</h2>
+<div class= "container text-center">
+	<h2>購物清單</h2>
+	<%= link_to '等一下再結帳，繼續購物', products_path, class:"btn-default" %>
+	<hr>
+</div>
+<div class="container">
 	<% current_cart.cart_products.each do |p| %>
-	  <li>
-	    <%= p.product.name %> 價格NT$:<%= p.product.price %> 數量:<%= p.quantity %>
+	 <div class="col-md-6">
+	 	<%= image_tag(p.product.image, class:"product2" )%>
+	 </div>
+	 <div class="col-md-6">
+	    <%= p.product.name %> <br>
+	    單價:NT$:<%= p.product.price %> <br>
+			數量:<%= p.quantity %>
 	    <%= link_to "減少1個", remove_product_path(p.product), :method => :post %>
-
-	  </li>
+		</div>
 	<% end %>
-	</ol>
-</div>
-<div>
-	<% if @order.errors.present? %>
-		<%= @order.errors.full_messages %>
-	<% end %>
+	
 </div>
 
-<hr>
+<div class="container text-center">
+<hr>		
+<h2>訂單資訊</h2>
+
+	<div>
+		<% if @order.errors.present? %>
+			<%= @order.errors.full_messages %>
+		<% end %>
+	</div>
+
 <%= form_for @order do |f| %>
 
 	
@@ -35,8 +46,17 @@
     <%= f.label :shipping_method %><br>
     <%= f.select :shipping_method, [ ["宅配", "home_delivery"], ["超商取貨", "convenience_store"]] %><br>
 
-		<%= f.submit %>
+		<%= f.submit class:"btn-default" %>
 
 <% end %>
-<hr>
-<%= link_to '等一下再結帳，繼續購物', products_path %>
+
+</div>
+
+<style>
+	.col-md-6{
+		min-height: 300px;
+		margin-bottom: 50px;
+	}
+</style>
+
+

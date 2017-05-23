@@ -6,8 +6,7 @@
   </ul>
 <% end%>
 
-
-
+<div class="container">
 
 <%= form_for ([:admin, @product])do |f| %> 
 	<%= f.label :name,"產品名稱:" %><br>
@@ -18,11 +17,19 @@
 	<%= f.text_field  :quantity %><br>
 	<%= f.label :image,"圖片:" %><br>
 	<%= f.file_field  :image %><br>
-
-	<%= f.submit %>
-	
-
-
-
-
+	<%= f.label :volume,"容量:" %><br>
+	<%= f.text_field :volume %><br>
+	<%= f.label :volume_type,"容量單位:" %><br>
+	<%= f.text_field :volume_type %><br>
+	<%= f.label :location,"產地:" %><br>
+	<%= f.text_field :location %><br>
+	<%= f.label :expiry_date,"到期日:" %><br>
+	<%= f.date_select :expiry_date %><br>
+	<%= f.label :usage,"使用說明" %><br>
+	<%= f.text_area :usage %><br>
+	<%= f.label :description,"產品敘述" %><br>
+	<%= f.text_area :description %><br>
+	<%= f.submit class:"btn-default"%>
 <% end %>
+
+</div>
