@@ -15,6 +15,8 @@ class OrdersController < ApplicationController
       redirect_to root_path
     end
 
+    @cart_products = current_cart.cart_products.page(params[:page]).per(8)
+
     @order = Order.new
 
 	end

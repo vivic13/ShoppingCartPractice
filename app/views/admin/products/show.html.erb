@@ -5,9 +5,15 @@
 	<%= link_to '回後台首頁' ,admin_products_path , class:"btn-default"%>
 </div>
 <div class="container">
-	<%= image_tag(@product.image) %>
+	<%= image_tag(@product.image, class:"product2") %>
 	<p>價格 : NT$<%= @product.price %></p>
-	<p>數量 : <%= @product.quantity %> 個</p>  
+	<p>庫存 : <%= @product.quantity %> 個</p> 
+	<p>化妝品字號 : <%= @product.code %></p> 
+	<p>容量: <%= @product.volume %>/ <%= @product.volume_type %></p>
+	<p>產地 : <%= @product.location %></p>
+	<p>到期日 : <%= @product.expiry_date %></p>
+	<p>使用說明 : <%= @product.usage %></p>
+	<p>產品敘述 : <%= @product.description %></p>
 </div>
 
 

@@ -1,55 +1,62 @@
 <div class= "container text-center">
 	<h2>購物清單</h2>
-	<%= link_to '等一下再結帳，繼續購物', products_path, class:"btn-default" %>
+	<%= link_to '繼續購物', products_path, class:"btn-default" %>
 	<hr>
 </div>
 <div class="container">
-	<% current_cart.cart_products.each do |p| %>
-	 <div class="col-md-6">
-	 	<%= image_tag(p.product.image, class:"product2" )%>
-	 </div>
-	 <div class="col-md-6">
-	    <%= p.product.name %> <br>
-	    單價:NT$:<%= p.product.price %> <br>
-			數量:<%= p.quantity %>
-	    <%= link_to "減少1個", remove_product_path(p.product), :method => :post %>
-		</div>
-	<% end %>
-	
+
+	<table class="text-center" style="width:100%">
+		<tr>
+			<th class="text-center">產品資訊</th>
+			<th class="text-center">單價</th>
+			<th class="text-center">數量</th>
+			<th class="text-center">總價</th>
+		</tr>
+		<% @cart_products.each do |p| %>
+			<tr>
+				<td><%= image_tag(p.product.image, class:"product3" )%><br> <%= p.product.name %> </td>
+				<td>NT$:<%= p.product.price %></td>
+				<td> <strong>	x <%= p.quantity%></strong> 
+							<%= link_to "-1", remove_product_path(p.product), :method => :post, class:"btn-default"%>
+							<%= link_to "+1", add_to_cart_product_path(p.product), :method => :post, class:"btn-default"%>
+				</td>
+				<td>NT$:<%= p.product.price*p.quantity %></td>
+			</tr>
+		<% end %>
+		<tr><td colspan="4"><%=paginate @cart_products%></td></tr>
+		<tr><td colspan="4"><h3>Totol: NT$<%= current_cart.cart_products.map{ |p| p.quantity*p.product.price }.sum %></h3></td></tr>
+	</table>
 </div>
 
 <div class="container text-center">
 <hr>		
 <h2>訂單資訊</h2>
-
 	<div>
 		<% if @order.errors.present? %>
 			<%= @order.errors.full_messages %>
 		<% end %>
 	</div>
+</div>
+<div class="container">
+	<%= form_for @order do |f| %>
+    <%= f.label :name, "姓名" %><br>
+    <%= f.text_field :name ,class:"form-control" ,type:"text"%><br>
 
-<%= form_for @order do |f| %>
+    <%= f.label :phone, "聯絡電話" %><br>
+    <%= f.text_field :phone ,class:"form-control" ,type:"tel"%><br>
 
-	
-    <%= f.label :name %><br>
-    <%= f.text_field :name%><br>
-
-    <%= f.label :phone %><br>
-    <%= f.text_field :phone %><br>
-
-		<%= f.label :address %><br>
-    <%= f.text_field :address %><br>
+		<%= f.label :address , "寄送地址" %><br>
+    <%= f.text_field :address ,class:"form-control" ,type:"text"%><br>
 		
-		<%= f.label :payment_method %><br>
+		<%= f.label :payment_method , "付款方式"%><br>
     <%= f.select :payment_method, [ ["信用卡", "credit_card"], ["ATM轉帳", "atm"]] %><br>
 
-    <%= f.label :shipping_method %><br>
+    <%= f.label :shipping_method , "運送方式"%><br>
     <%= f.select :shipping_method, [ ["宅配", "home_delivery"], ["超商取貨", "convenience_store"]] %><br>
 
 		<%= f.submit class:"btn-default" %>
 
-<% end %>
-
+	<% end %>
 </div>
 
 <style>

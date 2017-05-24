@@ -18,6 +18,12 @@
 @import "font-awesome";
 @import "products";
 
+.font-playfair{
+  font-size: 25px;
+  color: #fff;
+  font-weight: 400px;
+}
+
 body{
 	padding-top: 100px; 
   box-sizing: border-box;
@@ -78,6 +84,8 @@ a{
   padding-bottom: 5px;
   padding-right: 5px;
   padding-left: 5px;
+  margin-top: 5px;
+  margin-bottom: 5px;
 }
 
 .btn-default:hover{
@@ -85,4 +93,25 @@ a{
   border-radius: 3px;
 	background-color: rgba(10,186,181,1);
 	color: #fff;
+  margin-top: 5px;
+  margin-bottom: 5px;
 }
+.container{
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.col-md-3, .col-md-4, .col-md-6{
+  margin-bottom: 20px;
+}
+.product2{
+    width: 300px;
+    height: 310px;
+    max-width: 100%;
+    max-height: auto;
+  }
+.product3{
+    width: 150px;
+    height: 155px;
+    max-width: 100%;
+    max-height: auto;
+  }

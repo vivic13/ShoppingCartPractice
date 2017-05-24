@@ -3,13 +3,13 @@ class ProductsController < ApplicationController
 	
 	def index
 		@page_title = "純產品"
-		@products = Product.order('created_at desc')
+		@products = Product.order('created_at desc').page(params[:page]).per(12)
 	end
 
 
 	def add_to_cart
 		current_cart.add_product_in_cart(@product)
-		redirect_to products_url(@product)
+		redirect_to :back
 
 	end 
 

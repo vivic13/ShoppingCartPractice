@@ -10,25 +10,27 @@
 
 <%= form_for ([:admin, @product])do |f| %> 
 	<%= f.label :name,"產品名稱:" %><br>
-	<%= f.text_field :name %><br>
+	<%= f.text_field :name ,class:"form-control" ,type:"text",id:"example-text-input" %><br>
 	<%= f.label :price,"產品價格:" %><br>
-	<%= f.text_field :price %><br>
+	<%= f.text_field :price,class:"form-control" ,type:"number" ,id:"example-number-input" %><br>
 	<%= f.label :quantity,"庫存數量:" %><br>
-	<%= f.text_field  :quantity %><br>
-	<%= f.label :image,"圖片:" %><br>
-	<%= f.file_field  :image %><br>
+	<%= f.text_field  :quantity ,class:"form-control" ,type:"number" ,id:"example-number-input"%><br>
+	<%= f.label :code,"化妝品字號:" %><br>
+	<%= f.text_field  :code ,class:"form-control" ,type:"number" ,id:"example-number-input"%><br>
+	<%= f.label :image,"圖片:" ,class:"custom-file"%><br>
+	<%= f.text_field  :image ,type:"file",id:"file" ,class:"custom-file-input"%><br>
 	<%= f.label :volume,"容量:" %><br>
-	<%= f.text_field :volume %><br>
-	<%= f.label :volume_type,"容量單位:" %><br>
-	<%= f.text_field :volume_type %><br>
+	<%= f.text_field :volume%><br>
+	<%= f.label :volume_type,"容量單位:",class:"mr-sm-2" ,for:"inlineFormCustomSelect" %><br>
+	<%= f.select(:volume_type,['ML(毫升)','G(克)'], { class:"custom-select mb-2 mr-sm-2 mb-sm-0" ,id:"inlineFormCustomSelect"}) %><br>
 	<%= f.label :location,"產地:" %><br>
-	<%= f.text_field :location %><br>
+	<%= f.text_field :location ,class:"form-control"%><br>
 	<%= f.label :expiry_date,"到期日:" %><br>
-	<%= f.date_select :expiry_date %><br>
+	<%= f.text_field :expiry_date ,class:"form-control" ,type:"date", id:"example-date-input" %><br>
 	<%= f.label :usage,"使用說明" %><br>
-	<%= f.text_area :usage %><br>
+	<%= f.text_area :usage , class:"form-control" ,type:"text"%><br>	
 	<%= f.label :description,"產品敘述" %><br>
-	<%= f.text_area :description %><br>
+	<%= f.text_area :description, class:"form-control" ,type:"text" %><br>
 	<%= f.submit class:"btn-default"%>
 <% end %>
 
