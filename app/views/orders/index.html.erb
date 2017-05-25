@@ -1,17 +1,25 @@
-<h1>我的訂單記錄</h1>
+<div class="container text-center">
+	<h1>我的訂購記錄</h1>
+</div>
+<div class="container text-center">
+	<table class="text-center table-bordered" style="width:100%">
+		<tr>
+			<th class="text-center">訂單編號</th>
+			<th class="text-center">總金額</th>
+			<th class="text-center">付款狀態</th>
+			<th class="text-center">細節</th>
+		</tr>
+
+		<% @orders.each do |o| %>
+			<tr>		
+					<td><p><%= o.id %></p></td>
+					<td><p>NT$<%= o.amount %></p></td>
+					<td><p><%= o.status %></p></td>
+					<td><p><%= link_to '查看', order_path(o) %> </p></td>
+			</tr>
+		<% end %>
+	</table>
+</div>
 
 
-	<% @orders.each do |o| %>
-		<div>		
-				<p><%= o.id %></p>
-				<p><%= o.name %></p>
-				<p>NT$<%= o.amount %></p>
-				<p><%= o.created_at %></p>
-				<p><%= link_to 'Detail', order_path(o)%></p>
-		</div>
-	<% end %>
 
-
-
-
-<%= link_to '繼續購物' , products_path %>

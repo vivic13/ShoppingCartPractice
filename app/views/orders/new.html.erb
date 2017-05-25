@@ -1,11 +1,10 @@
 <div class= "container text-center">
 	<h2>購物清單</h2>
 	<%= link_to '繼續購物', products_path, class:"btn-default" %>
-	<hr>
 </div>
 <div class="container">
 
-	<table class="text-center" style="width:100%">
+	<table class="text-center table-bordered" style="width:100%">
 		<tr>
 			<th class="text-center">產品資訊</th>
 			<th class="text-center">單價</th>
@@ -24,13 +23,12 @@
 			</tr>
 		<% end %>
 		<tr><td colspan="4"><%=paginate @cart_products%></td></tr>
-		<tr><td colspan="4"><h3>Totol: NT$<%= current_cart.cart_products.map{ |p| p.quantity*p.product.price }.sum %></h3></td></tr>
+		<tr><td colspan="4"><h3>Total: NT$<%= current_cart.cart_products.map{ |p| p.quantity*p.product.price }.sum %></h3></td></tr>
 	</table>
 </div>
 
-<div class="container text-center">
-<hr>		
-<h2>訂單資訊</h2>
+<div class="container text-center">	
+<h2>結帳</h2>
 	<div>
 		<% if @order.errors.present? %>
 			<%= @order.errors.full_messages %>
@@ -53,17 +51,11 @@
 
     <%= f.label :shipping_method , "運送方式"%><br>
     <%= f.select :shipping_method, [ ["宅配", "home_delivery"], ["超商取貨", "convenience_store"]] %><br>
-
-		<%= f.submit class:"btn-default" %>
-
+		<div class="container text-center">
+			<%= f.submit "送出", class:"btn-default" %>
+		</div>
 	<% end %>
 </div>
 
-<style>
-	.col-md-6{
-		min-height: 300px;
-		margin-bottom: 50px;
-	}
-</style>
 
 
