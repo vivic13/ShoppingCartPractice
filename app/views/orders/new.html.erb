@@ -45,9 +45,6 @@
 
 		<%= f.label :address , "寄送地址" %><br>
     <%= f.text_field :address ,class:"form-control" ,type:"text"%><br>
-		
-		<%= f.label :payment_method , "付款方式"%><br>
-    <%= f.select :payment_method, [ ["信用卡", "credit_card"], ["ATM轉帳", "atm"]] %><br>
 
     <%= f.label :shipping_method , "運送方式"%><br>
     <%= f.select :shipping_method, [ ["宅配", "home_delivery"], ["超商取貨", "convenience_store"]] %><br>

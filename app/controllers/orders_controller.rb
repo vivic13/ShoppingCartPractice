@@ -37,6 +37,17 @@ class OrdersController < ApplicationController
 
 	end
 
+	def checkout_pay2go
+		@order = current_user.orders.find( params[:id] )
+
+		if @order.paid?
+			redirect_to :back, alert: 'already paid!'
+		else
+			@payment = Payment.create!( :order => @order,:payment_method => params[:payment_method],
+                                  :amount => @order.amount )
+			render :layout => false
+		end
+	end
 
 	private
 

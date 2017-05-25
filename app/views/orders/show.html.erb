@@ -1,21 +1,40 @@
 <div class="container text-center" >
 	<% if @order.status == "new" %>
-		<h1>請確認訂單資訊</h1>
+		<h1>請確認訂單資訊，並選擇付款方式</h1>
 	<% else %> 
 		<h1>付款成功，謝謝您的訂購</h1>
 	<% end %>
 </div>
 <div class="container">
 
-
-<p><i class="fa fa-info fa-2x" aria-hidden="true">付款方式:</i> <%= @order.payment_method %></p>
 <p><i class="fa fa-info fa-2x" aria-hidden="true">運送方式:</i> <%= @order.shipping_method %></p>
 <p><i class="fa fa-info fa-2x" aria-hidden="true">訂單金額:</i> NT$ <%= @order.amount %></p>
 
+</div>
 
+<% if @order.paid?  %>
+	<div class="container ">
+			<% @order.payments.each do |p| %>
+			<i class="fa fa-info-circle fa-2x" aria-hidden="true">
+					<% if p.paid_at %>
+						請至email確認</i>
+					<% else %>
+						付款失敗，請再試ㄧ次，在 <%=time_ago_in_words(p.created_at) %> 前</i>
+					<% end %>					
+			<% end %>
+	</div>
 
-<% if @order.status == "new" %>
-  <%= link_to '付款' , class:"btn-default"%>
+<% else %>
+	<div class="container">
+	 <i class="fa fa-gift fa-2x" aria-hidden="true">付款方式:</i></p>
+			<div class="container">
+				<% Payment::PAYMENT_METHODS.each do |pm| %>
+						<%= link_to t(pm, :scope => "PaymentPay2go"), checkout_pay2go_order_path(@order, :payment_method => pm), :class => "btn-default", :method => :post %>			
+				<% end %>
+			</div>
+
+	</div>
 <% end %>
 
-</div>
+
+

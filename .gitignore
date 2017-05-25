@@ -21,3 +21,5 @@
 .byebug_history
 
 /config/email.yml
+/config/pay2go.yml
+

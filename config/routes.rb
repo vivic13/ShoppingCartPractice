@@ -10,7 +10,14 @@ Rails.application.routes.draw do
 	get '/aboutus', to: 'home#about', :controller => 'home'
   get '/contactus', to: 'home#contact', :controller => 'home'
 	
-	resources :orders
+	resources :orders do 
+		member do
+      post :checkout_pay2go
+    end
+	end 
+
+	post 'pay2go/return'
+  post 'pay2go/notify'
 
 	root :to => "products#index"
 
