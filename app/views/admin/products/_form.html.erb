@@ -18,7 +18,7 @@
 	<%= f.label :code,"化妝品字號:" %><br>
 	<%= f.text_field  :code ,class:"form-control" ,type:"number" ,id:"example-number-input"%><br>
 	<%= f.label :image,"圖片:" ,class:"custom-file"%><br>
-	<%= f.text_field  :image ,type:"file",id:"file" ,class:"custom-file-input"%><br>
+	<%= f.file_field  :image %><br>
 	<%= f.label :volume,"容量:" %><br>
 	<%= f.text_field :volume%><br>
 	<%= f.label :volume_type,"容量單位:",class:"mr-sm-2" ,for:"inlineFormCustomSelect" %><br>
