@@ -4,10 +4,10 @@ lock "3.8.0"
 
 set :application, "ecommerce"
 set :repo_url, "git@github.com:vivic13/ecommerce.git"
-set :deploy_to, '/home/vivian/ecommerce'
+set :deploy_to, '/home/deploy/ecommerce'
 set :keep_releases, 5
 
-append :linked_files, 'config/database.yml', 'config/secrets.yml','config/email.yml'
+append :linked_files, 'config/database.yml', 'config/secrets.yml','config/email.yml', 'config/pay2go.yml'
 append :linked_dirs, 'log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'public/system'
 set :passenger_restart_with_touch, true
 
